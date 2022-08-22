@@ -3,10 +3,11 @@
   <head>
     <title>This is the lixian demo!</title>
   </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <body>
     <p>This is an example of how to create a dropdown of students group, then pop the second drop down with students in that group.</p>
      <select id="studentGroupList" >
-        <option value="">Select one group</option>
+        <option value="">Select one student group!</option>
         <option value="A">Group A</option>
         <option value="B">Group B</option>
         <option value="C">Group C</option>
@@ -14,6 +15,26 @@
     </select>
 
     <select id="studentsInGroup">
+        <option value="">Select one student in that group!</option>
+        <option value="A">Dai</option>
+        <option value="A">Cai</option>
+        <option value="B">Gu</option>
+        <option value="B">Song</option>
+        <option value="C">MaGe</option>
+        <option value="C">JinJib</option>
+        <option value="D">Summer</option>
+        <option value="D">Yilin</option>
     </select>
   </body>
+  <script type="text/javascript">
+    $("#studentGroupList").change(function() {
+      if ($(this).data('options') === undefined) {
+        $(this).data('options', $('#select2 option').clone());
+      }
+    var id = $(this).val();
+    var options = $(this).data('options').filter('[value=' + id + ']');
+    $('#studentsInGroup').html(options);
+});
+  </script>
+
 </html>
