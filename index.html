@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>This is the dropdown demo!</title>
+    <!-- Script -->
+    <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+    <script type="text/javascript">
+        var selectableValues = [
+            {
+                'title': 'Group A Students',
+                'values': [
+                    'yilin',
+                    'summer',
+                    'allie'
+                ]
+            },
+            {
+                'title': 'Group B Students',
+                'values': [
+                    'gu',
+                    'dai',
+                    'song'
+                ]
+            },
+            {
+                'title': 'Group C Students',
+                'values': [
+                    'laoma',
+                    'jinjin',
+                    'leo',
+                    'leah'
+                ]
+            },
+            {
+                'title': 'Group D Students',
+                'values': [
+                    'who am i',
+                    'i am',
+                    'king'
+                ]
+            }
+        ];
+
+        var $select_one = $select_two = false;
+
+        function populateSelectTwo(parentKey) {
+            $('option', $select_two).remove();
+            $select_two.append('<option value="">Select...</option>');
+            $.each(selectableValues[parentKey].values, function (k, v) {
+                $select_two.append('<option value="' + k + '">' + v + '</option>');
+            });
+        };
+
+        jQuery(function ($) {
+
+            $select_one = $('#select_one');
+            $select_two = $('#select_two');
+
+            // Populate Select One
+            $.each(selectableValues, function (k, v) {
+                $select_one.append('<option value="' + k + '">' + v.title + '</option>');
+            });
+            $('option:first', $select_one).text('Select...');
+            $select_one.on('change', function () {
+                populateSelectTwo(this.value);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <p>This is an example of how to create a dropdown of students group, then pop the second drop down with students in
+        that group.</p>
+    <div style="margin: 10px;">
+        <label class="col-4 control-label" for="select_one">Student Group List</label>
+        <div class="col-8">
+            <select id="select_one" name="select_one" class="form-control">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    </div>
+    <div style="margin: 10px;">
+        <label class="col-4 control-label" for="select_two">Student Names In Group</label>
+        <div class="col-8">
+            <select id="select_two" name="select_two" class="form-control">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    </div>
+</body>
+
+</html>
