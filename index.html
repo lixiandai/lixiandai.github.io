@@ -44,11 +44,10 @@
 
         var $select_one = $select_two = false;
 
-        function populateSelectTwo(parentKey) {
-            $('option', $select_two).remove();
-            $select_two.append('<option value="">Select...</option>');
+        function populateListOne(parentKey) {
+            $('ul').empty()
             $.each(selectableValues[parentKey].values, function (k, v) {
-                $select_two.append('<option value="' + k + '">' + v + '</option>');
+                $list_one.append('<li><a href="#">' + v + '</a></li>');
             });
         };
 
@@ -63,7 +62,7 @@
             });
             $('option:first', $select_one).text('Select...');
             $select_one.on('change', function () {
-                populateSelectTwo(this.value);
+                populateListOne(this.value);
             });
 
         });
@@ -82,12 +81,12 @@
         </div>
     </div>
     <div style="margin: 10px;">
-        <label class="col-4 control-label" for="select_two">Student Names In Group</label>
-        <div class="col-8">
-            <select id="select_two" name="select_two" class="form-control">
-                <option value="">Loading...</option>
-            </select>
-        </div>
+        <label class="col-4 control-label" for="list_one">Student Names In Group</label>
+         <div>
+             <ul id='list_one'>
+                <li>Loading...</li>
+             </ul>
+         </div>
     </div>
 </body>
 
