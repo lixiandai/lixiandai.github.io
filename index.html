@@ -1,5 +1,7 @@
 <!doctype html>
 <html>
+<style>
+</style>
 
 <head>
     <title>This is the dropdown demo!</title>
@@ -47,14 +49,12 @@
         function populateListOne(parentKey) {
             $('ul').empty()
             $.each(selectableValues[parentKey].values, function (k, v) {
-                $list_one.append('<li><a href="#">' + v + '</a></li>');
+                $('#list_one').append('<li><a href="#">' + v + '</a></li>');
             });
         };
 
         jQuery(function ($) {
-
             $select_one = $('#select_one');
-            $select_two = $('#select_two');
 
             // Populate Select One
             $.each(selectableValues, function (k, v) {
@@ -70,8 +70,7 @@
 </head>
 
 <body>
-    <p>This is an example of how to create a dropdown of students group, then pop the second drop down with students in
-        that group.</p>
+    <p>This is an example of how to create a dropdown of students group, then pop the students in a list view.</p>
     <div style="margin: 10px;">
         <label class="col-4 control-label" for="select_one">Student Group List</label>
         <div class="col-8">
@@ -81,12 +80,11 @@
         </div>
     </div>
     <div style="margin: 10px;">
-        <label class="col-4 control-label" for="list_one">Student Names In Group</label>
-         <div>
-             <ul id='list_one'>
-                <li>Loading...</li>
-             </ul>
-         </div>
+        <label class="col-4 control-label" for="list_one">Student Names</label>
+        <div>
+            <ul id='list_one'>
+            </ul>
+        </div>
     </div>
 </body>
 
